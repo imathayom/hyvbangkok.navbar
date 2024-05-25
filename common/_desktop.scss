@@ -1,0 +1,316 @@
+body {
+  font-family: "Anuphan", sans-serif;
+  font-weight: 300;
+  overflow-y: scroll;
+}
+
+/* ===============================================================
+			[ * Desktop Nav ] 
+================================================================*/
+
+.nav-container {
+  background: var(--color-menubar);
+  height: 44px;
+  z-index: 300; 
+  position: relative; 
+  left: 0;
+  top: 0;
+  right: 0;
+  nav {
+    width: var(--menu-width);
+    margin: 0 auto;
+    padding: 0 10px;
+    height: 100%;
+    ol,ul{
+        padding:0!important;
+    }
+    .desktop-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none; 
+             
+                .dropdown-list {
+                    &.show{
+                        display: block; 
+                        animation: smooth-appear 1s ease forwards;
+                    }
+                    display: none;
+                    position: absolute;
+                    background: var(--color-black);
+                    min-width: 160px; 
+                    padding: 20px 20px 100px;
+                    z-index: 1; 
+                    left:0;
+                    width:100%; 
+                        .dropdown-listc {
+                            list-style: none;
+                        }
+                    .dropdown-item {
+                        padding: 10px 0;
+                        box-sizing: border-box;
+                        font-size: 12px;
+                        color:var(--color-link); 
+                        a{
+                            color : var(--color-link);
+                        }
+                    }
+                    .container{
+                        width: var(--menu-width);
+                    }
+                }
+            
+             
+            li {
+            padding:0!important;
+            margin:0!important;
+                a {
+                color: var(--color-link);
+                text-decoration: none;
+                font-size: 12px;
+                opacity: 0.8;
+                transition: opacity 400ms;
+                &:hover {
+                    opacity: 1;
+                }
+                }
+            }
+    }
+    .link-logo {
+      background: url("images/apple-logo.svg");
+      display: block;
+      background-position: center;
+      height: 44px;
+      width: 15px;
+      background-repeat: no-repeat;
+    }
+
+    .link-search {
+      background: url("images/search-icon.svg");
+      display: block;
+      background-position: center;
+      background-size: 18px;
+      height: 44px;
+      width: 20px;
+      background-repeat: no-repeat;
+    }
+
+    .link-bag {
+      background: url("images/bag-icon.svg");
+      display: block;
+      background-position: center;
+      background-size: 17px;
+      height: 44px;
+      width: 20px;
+      background-repeat: no-repeat;
+    }
+
+    .link-close {
+      background: url("images/close-icon.svg");
+      display: block;
+      background-position: center;
+      background-size: 17px;
+      height: 44px;
+      width: 20px;
+      background-repeat: no-repeat;
+    }
+  }
+}
+
+/* Desktop Nav Animation */
+
+.desktop-nav {
+  li {
+    transition: all 400ms ease;
+  }
+  &.hide {
+    li {
+      opacity: 0;
+      transform: scale(0.8);
+      pointer-events: none;
+    }
+  }
+}
+
+/* ===============================================================
+			[ * Desktop Nav ] 
+================================================================*/
+
+/* ===============================================================
+			[ * Search Container ] 
+================================================================*/
+
+.search-container {
+  width: 60%;
+  margin: 0 auto;
+  padding: 0 42px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .link-search {
+    position: absolute;
+    left: 12px;
+    opacity: 0.5;
+  }
+  .link-close {
+    position: absolute;
+    top: 0;
+    right: 12px;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 400ms;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  form {
+    width: 100%;
+    margin: 0 auto;
+    input {
+      width: 100%;
+      height: 44px;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #fff;
+      font-family: "Inter", sans-serif;
+      font-size: 17px;
+    }
+  }
+}
+/* Quick Links */
+
+.search-container {
+  .quick-links {
+    background: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    padding: 16px 8px;
+    border-radius: 0 0 16px 16px;
+    h2 {
+      text-transform: uppercase;
+      font-size: 12px;
+      color: #6e6e73;
+      margin: 0 32px;
+      margin-top: 10px;
+    }
+    ul {
+      list-style: none;
+      margin-top: 12px;
+      li {
+        a {
+          display: inline-block;
+          width: 100%;
+          padding: 8px 50px;
+          font-size: 14px;
+          color: #1d1d1f;
+          text-decoration: none;
+          font-weight: 400;
+          &:hover {
+            background: #f5f5f5;
+            color: #2997ff;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Search Container Animation */
+.search-container {
+  .link-search {
+    opacity: 0.6;
+  }
+  form,
+  .link-search {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 400ms ease;
+    transition-delay: 300ms;
+  }
+  .quick-links {
+    h2 {
+      opacity: 1;
+      transform: translateX(0);
+      transition: all 400ms ease;
+      transition-delay: 100ms;
+    }
+    ul {
+      li {
+        opacity: 1;
+        transform: translateX(0);
+        transition: all 400ms ease;
+      }
+    }
+  }
+  &.hide {
+    .quick-links {
+      ul {
+        li {
+          transform: translateX(60px);
+          opacity: 0;
+        }
+      }
+      h2 {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+    }
+    form,
+    .link-search {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    .link-close {
+      opacity: 0;
+    }
+  }
+  .link-close {
+    opacity: 0.5;
+    transition: all 400ms ease;
+    transition-delay: 400ms;
+  }
+}
+
+/* ===============================================================
+			[ * Search Container ] 
+================================================================*/
+
+/* ===============================================================
+			[ * Overlay ] 
+================================================================*/
+ 
+.overlay.show {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.48);
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 100;
+}
+/* Overlay Animation */
+
+.overlay {
+  transition: all 400ms ease;
+}
+
+/* ===============================================================
+			[ * Overlay ] 
+================================================================*/
+
+/* Hidden Items */
+
+.mobile-nav,
+.mobile-search-container {
+  display: none;
+}
+ 
